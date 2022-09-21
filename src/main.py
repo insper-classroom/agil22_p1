@@ -34,7 +34,7 @@ usuario_r.adicionar_amigo(usuario_c)
 usuario_b.adicionar_amigo(usuario_e)
 usuario_b.adicionar_amigo(usuario_e) # não pode adicionar o mesmo amigo mais de uma vez
 
-# Camila precisa ter 3 amigos (Bruno, Eduardo, Elisa, Ramon)
+# Camila precisa ter 4 amigos (Bruno, Eduardo, Elisa, Ramon)
 # Bruno precisa ter 2 amigos (Camila, Elisa)
 # Ramon precisa ter 1 amigo (Camila)
 # Elisa precisa ter 1 amigo (Bruno)
@@ -60,7 +60,7 @@ post2_c = usuario_c.escrever_post('Meu segundo Post - Camila')
 # Possivel verificar que as duas postagens estão na timeline da Camila
 # Inicialmente sem comentario nenhum
 
-comentario_b_para_c_post_2 = usuario_r.comentar_post(post1_c, 'Comentario de Bruno no Post 1 de Camila')
+comentario_r_para_c_post_1 = usuario_r.comentar_post(post1_c, 'Comentario de Ramon no Post 1 de Camila')
 comentario_r_para_c_post_2 = usuario_r.comentar_post(post2_c, 'Comentario de Ramon no Post 2 de Camila')
 comentario_e_para_c_post_2 = usuario_e.comentar_post(post2_c, 'Comentario de Eliza no Post 2 de Camila')
 #print(comentario_e_para_c_post_2) # verifica comentario
@@ -104,5 +104,5 @@ print(usuario_c)
 print('\n \n')
 usuario_c.remover_amigo(usuario_r)
 print(usuario_c)
-
+print(usuario_r)
 # +++++++++++++++++++++++++++++++++++++

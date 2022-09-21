@@ -81,7 +81,7 @@ class User:
 
     # !!!! Somente o dono do comentario ou dono do post pode remover o comentario
     def remover_comentario_do_post(self, post:Post, comentario:Comment):
-        if (comentario.proprietario_id == self.id or post.proprietario == self.id ):
+        if (comentario.proprietario_id == self.id or post.proprietario == self ):
             post.remover_comentario(comentario)
 
 
