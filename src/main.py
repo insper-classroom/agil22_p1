@@ -1,8 +1,5 @@
-#https://bobbyhadz.com/blog/python-importerror-cannot-import-name#:~:text=The%20Python%20%22ImportError%3A%20cannot%20import,the%20imports%20in%20a%20function.
 from classes.user import User
-#from classes.timeline import Timeline
-#from classes.post import Post
-#from classes.comment import Comment
+from classes.rede_social import User, Timeline, Post, Comment 
 
 
 

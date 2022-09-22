@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from pathlib import Path
+from classes.rede_social import User, Timeline
 import pandas as pd
 
 
@@ -8,13 +9,11 @@ app.list_of_dicts = []
 
 @app.before_first_request
 def load_dados():
-    FILE = Path(__file__).resolve()
-    src_folder = FILE.parents[0]
-    rel_arquivo = Path('recursos/produtos.csv')
-    arquivo = src_folder / rel_arquivo
-    
-    data = pd.read_csv(arquivo.resolve(), encoding="utf-8")
-    app.list_of_dicts = data[['ean', 'name']].dropna().to_dict(orient="records")
+    usuario_c = User(user_id=1220)
+    usuario_r = User(user_id=1221)
+    usuario_b = User(user_id=1222)
+    usuario_e = User(user_id=1223)
+    usuario_ed = User(user_id=1, nome='Eduardo', email='eduardo@email.com')
 
 # Apenas rota de teste, pode ser removida posteriormente
 @app.route("/")

@@ -1,11 +1,10 @@
 from __future__ import annotations
 from model.db import *
-from .post import Post
-#from .timeline import Timeline
-from .comment import Comment
+
+
 
 class User:
-
+    
     usuarios_ativos_na_plataforma = 0
 
     def __init__(self, user_id:int, nome='', email='' ):
@@ -117,5 +116,125 @@ Timeline:
         return s
 
 
-        
 
+
+class Comment:
+    
+    def __init__(self, user:User, comentario:str):
+        # Não iremos carregar o objeto para não sobrecarregar o desenvolvimento ao ter que ler
+        # os valores da base para construir o objeto User para atrelar aos comentarios de um post
+        self.proprietario_id = user.id
+        self.__conteudo = comentario
+
+    @property
+    def conteudo(self):
+        return self.__conteudo
+
+    @conteudo.setter
+    def conteudo(self, novo_conteudo):
+        self.__conteudo = novo_conteudo
+
+    def __str__(self):
+        return f'{self.proprietario_id}: {self.__conteudo}'
+
+
+
+
+
+class Post:
+    
+    def __init__(self, user, conteudo='' ):
+        self.proprietario = user
+        self.conteudo = conteudo
+        self.comentarios = []
+        self.qtd_comentarios = 0
+
+
+    def adicionar_comentario(self, comentario:Comment):
+        
+        if not(comentario in self.comentarios):
+            self.comentarios.append(comentario)
+            self.qtd_comentarios +=1
+
+
+    def remover_comentario(self, comentario:Comment):
+        
+        if comentario in self.comentarios:
+            self.comentarios.remove(comentario)
+            self.qtd_comentarios -=1
+
+   
+    def __str__(self):
+        # carrega comentario se existir
+        lista_comentario = []
+        for c in self.comentarios:
+            lista_comentario.append( str(c) )
+
+        # continuar na próxima linha
+        s = \
+        f'''
+Post do usuario {self.proprietario.nome}
+conteudo: {self.conteudo}
+{self.qtd_comentarios} comentarios
+----
+comentarios: {lista_comentario}
+----
+'''
+        return s
+
+
+
+
+class Timeline:
+    
+    def __init__(self, user, postagens=[] ):
+        from .post import Post
+
+        self.proprietario = user
+        self.__posts = []
+        self.__qtd_posts = 0
+
+        # Se postagens não estiver zerado, adicionar
+        for post in postagens:
+            # verifica se é da classe Post
+            if type(post) == Post:
+                self.__posts.append(post)
+                self.__qtd_posts += 1
+
+        # Verifica se existe postagens na base
+
+    def retorna_lista_de_posts(self, post):
+        return self.__posts
+
+
+    def adicionar_post(self, post):
+
+        if not( post in self.__posts ):
+            self.__posts.append(post)
+            self.__qtd_posts += 1
+
+
+    def remover_post(self, post):
+    
+        if post in self.__posts:
+            self.__posts.remove(post)
+            self.__qtd_posts -= 1
+
+
+    def __str__(self):
+        # carrega comentario se existir
+        s_temp = '\n'
+        for p in self.__posts:
+            s_temp = s_temp + '*******'
+            s_temp = s_temp + str(p)
+            s_temp = s_temp + '******* \n'
+            
+
+        # continuar na próxima linha
+        s = \
+        f'''
+Timeline do usuario {self.proprietario.nome}
+{self.__qtd_posts} posts
+Postes:
+{s_temp}'''
+        return s
