@@ -8,7 +8,7 @@ class User:
     usuarios_ativos_na_plataforma = 0
 
     def __init__(self, user_id:int, nome='', email='' ):
-        from .timeline import Timeline
+        #from .timeline import Timeline
     
         # obrigatório email e senha para criação do usuário
         if (nome=='' and email==''):
@@ -188,7 +188,7 @@ comentarios: {lista_comentario}
 class Timeline:
     
     def __init__(self, user, postagens=[] ):
-        from .post import Post
+        #from .post import Post
 
         self.proprietario = user
         self.__posts = []

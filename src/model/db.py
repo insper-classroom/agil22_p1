@@ -10,21 +10,13 @@ db = Path(src_folder / rel_arquivo_db).resolve()
 
 
 # Utilizado com a operação de SELECT
-def select_query(sql, user_id='0'):
-    """
-    Executa um SELECT query em uma conexão SQLite.\n
-    Argumentos:
-    sql -- SELECT Query SQL (por simplificação, não existe verificação)
-    user_id -- Valor a ser buscado, se '0', retorna todos usuarios
-    Retorno:
-    Registros da tabela na Base de exemplo e indicação de sucesso (True/False)
-    """
+def select_query(sql, user_id=0):
     sucesso = True
     try:
         # Realiza a conexão com a Base de Dados
         conexao = sqlite3.connect(db)
         cur = conexao.cursor()
-        if user_id=='0':
+        if user_id==0:
             # Executa a query
             cur.execute(sql)
             # Busca todos os registros
@@ -56,17 +48,8 @@ def select_query(sql, user_id='0'):
 
 # Utilizado com a operação de INSERT
 def insert_query(sql, data):
-    """
-    Executa um INSERT query.\n
-    Argumentos:
-    sql -- INSERT SQL Query
-    data -- Dicionário com informações. Exemplo.: cliente: (ean, name)
-    data = { 'ean': '121212121', 'name': 'Escova de cabelo' } (Exemplo)
-    Retorno:
-    ID gerado automaticamente pela base e indicação de sucesso (True/False)
-    """
+
     # Estamos adicionando essa linha para que após a inserção do registro
-    # seja retorna o id do cliente adicionado
     sucesso = True
     try:
         # Realiza a conexão com a Base de Dados
@@ -75,7 +58,7 @@ def insert_query(sql, data):
         # Forma segura que passar parâmetro para uma query SQL
         # Evitando SQL Injection, mais infos em https://realpython.com/prevent-python-sql-injection/
         # Executa a query
-        cur.execute(sql, (data['ean'], data['name']))
+        cur.execute(sql, data)
         # Realiza o commit da operação
         conexao.commit()
     except:
@@ -91,16 +74,7 @@ def insert_query(sql, data):
 
 # Utilizado com a operação de UPDATE
 def update_query(sql, data):
-    """
-    Executa um UPDATE query.\n
-    Argumentos:
-    sql -- UPDATE SQL Query
-    id -- ID cliente que será atualizado
-    data -- Dicionário com informações. Exemplo.: cliente: (ean, name)
-    data = { 'ean': '121212121', 'name': 'Escova de cabelo' } (Exemplo)
-    Retorno:
-    Quantidade de registros alterados e indicação de sucesso (True/False)
-    """
+
     sucesso = True
     try:
         # Realiza a conexão com a Base de Dados
@@ -109,7 +83,7 @@ def update_query(sql, data):
         # Forma segura que passar parâmetro para uma query SQL
         # Evitando SQL Injection, mais infos em https://realpython.com/prevent-python-sql-injection/
         # Executa a query
-        cur.execute(sql, ( data['name'], data['ean'] ))
+        cur.execute(sql, data)
         # Qtd de resgistros alterados
         update_rows = cur.rowcount # poderia ser utilizado para verificações
         conexao.commit()
@@ -125,15 +99,8 @@ def update_query(sql, data):
 
 
 # Utilizado com a operação de DELETE
-def delete_query(sql, ean):
-    """
-    Executa um DELETE query.\n
-    Argumentos:
-    sql -- DELETE SQL Query
-    ean -- ean que será deletado
-    Retorno:
-    Quantidade de registros alterados e indicação de sucesso (True/False)
-    """
+def delete_query(sql, user_id):
+
     sucesso = True
     try:
         # Realiza a conexão com a Base de Dados
@@ -142,7 +109,7 @@ def delete_query(sql, ean):
         # Forma segura que passar parâmetro para uma query SQL
         # Evitando SQL Injection, mais infos em https://realpython.com/prevent-python-sql-injection/
         # Executa a query
-        cur.execute(sql, (ean,))
+        cur.execute(sql, (user_id,))
         # Qtd de registros deletados
         deleted_rows = cur.rowcount
         # Realiza o commit da operação
