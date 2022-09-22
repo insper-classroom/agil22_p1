@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from pathlib import Path
-from classes.rede_social import User, Timeline
+from classes.rede_social import *
 from model.db import *
 
 
@@ -61,7 +61,6 @@ def rota_inserir_usuario( user_id ):
         return {'Erro': 'Usuario já existe no cadastro'}, 404
 
 
-
 # Operações com a base
 @app.route('/usuario/<int:user_id>', methods=['GET'])
 def rota_buscar_usuario( user_id ):
@@ -75,7 +74,7 @@ def rota_buscar_usuario( user_id ):
     if encontrado:
         return jsonify(resp), 200
     else:
-        return {'Erro': 'Produto não Encontrado'}, 404
+        return {'Erro': 'Usuário não Encontrado'}, 404
 
 
 # Operações com a base
@@ -88,9 +87,16 @@ def rota_buscar_todos_usuario():
     if sucesso:
         return jsonify(users), 200
     else:
-        return {'Erro': 'Produto não'}, 404
+        return {'Erro': 'Não foi possivel localizar nenhum usuário'}, 500
 
 
+# Operações com a base
+@app.route('/usuario/<int:user_id>/timeline', methods=['GET'])
+def rota_timeline_de_usuario(user_id):
+
+    usuario = User.buscar_usuario_ativo(user_id=user_id)
+    time_line = usuario.time_line.to_dict()
+    return jsonify(time_line), 200
 
 
 

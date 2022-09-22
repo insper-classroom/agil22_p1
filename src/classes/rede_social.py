@@ -1,15 +1,20 @@
 from __future__ import annotations
+from copy import deepcopy
 from model.db import *
+import json
 
 
 
 class User:
     
     usuarios_ativos_na_plataforma = 0
+    dict_usuarios_ativos = {}
 
     def __init__(self, user_id:int, nome='', email='' ):
-        #from .timeline import Timeline
     
+        if user_id in User.dict_usuarios_ativos.keys():
+            return
+
         # obrigatório email e senha para criação do usuário
         if (nome=='' and email==''):
             # verificando se usuário já existe na base
@@ -32,9 +37,18 @@ class User:
         self.time_line = Timeline(self)
         self.qtd_amigos = 0
         User.usuarios_ativos_na_plataforma += 1
+        User.dict_usuarios_ativos[user_id] = self
 
     def __del__(self):
         User.usuarios_ativos_na_plataforma -= 1
+
+    @classmethod
+    def buscar_usuario_ativo(cls, user_id:int)->User:
+
+        if user_id in cls.dict_usuarios_ativos.keys():
+            return cls.dict_usuarios_ativos[user_id]
+
+
 
     def adicionar_amigo(self, amigo:User):
 
@@ -88,9 +102,8 @@ class User:
         if post in self.time_line.retorna_lista_de_posts:
             self.time_line.remover_post(post)
 
-
-    #def retornar_posts(self):
-    #    return self.time_line.retorna_lista_de_posts()
+    def to_dict(self):
+        return json.loads(json.dumps(self, default=lambda o: o.__dict__))
 
 
     def __str__(self):
@@ -134,6 +147,9 @@ class Comment:
     def conteudo(self, novo_conteudo):
         self.__conteudo = novo_conteudo
 
+    def to_dict(self):
+        return {'user_id':self.proprietario_id, 'comentario':self.__conteudo}
+
     def __str__(self):
         return f'{self.proprietario_id}: {self.__conteudo}'
 
@@ -162,6 +178,17 @@ class Post:
         if comentario in self.comentarios:
             self.comentarios.remove(comentario)
             self.qtd_comentarios -=1
+
+    def to_dict(self):
+        temp_post = {}
+        temp_post['conteudo'] = self.conteudo
+        temp_post['qtd_comentarios'] = self.qtd_comentarios
+
+        temp_post['comentarios'] = []
+        for comentario in self.comentarios:
+            temp_post['comentarios'].append( comentario.to_dict() )
+
+        return temp_post
 
    
     def __str__(self):
@@ -219,6 +246,24 @@ class Timeline:
         if post in self.__posts:
             self.__posts.remove(post)
             self.__qtd_posts -= 1
+
+
+    def to_dict(self):
+
+        user_posts = []
+        for post in self.__posts:
+            user_posts.append(post.to_dict()) 
+
+        timeline = {}
+        timeline['qtd_posts'] = self.__qtd_posts
+        timeline['posts'] = user_posts
+
+        dict_obj = {}
+        dict_obj['user_id'] = self.proprietario.id
+        dict_obj['nome'] = self.proprietario.nome
+        dict_obj['timeline']= timeline
+
+        return dict_obj
 
 
     def __str__(self):
