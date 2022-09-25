@@ -1,8 +1,5 @@
 from __future__ import annotations
-from copy import deepcopy
 from model.db import *
-import json
-
 
 
 class User:
@@ -11,10 +8,7 @@ class User:
     dict_usuarios_ativos = {}
 
     def __init__(self, user_id:int, nome='', email='' ):
-    
-        if user_id in User.dict_usuarios_ativos.keys():
-            return
-
+        
         # obrigatório email e senha para criação do usuário
         if (nome=='' and email==''):
             # verificando se usuário já existe na base
@@ -39,8 +33,12 @@ class User:
         User.usuarios_ativos_na_plataforma += 1
         User.dict_usuarios_ativos[user_id] = self
 
+
     def __del__(self):
+        User.dict_usuarios_ativos.pop(self.id, None)
         User.usuarios_ativos_na_plataforma -= 1
+        
+
 
     @classmethod
     def buscar_usuario_ativo(cls, user_id:int)->User:
@@ -76,9 +74,6 @@ class User:
             return False
             
 
-    def alterar_timeline(self, timeline):
-        self.time_line = timeline
-
     
     def escrever_post(self, mensagem:str):
         meu_post = Post(self, mensagem)
@@ -101,10 +96,6 @@ class User:
     def remover_post_da_timeline(self, post):
         if post in self.time_line.retorna_lista_de_posts:
             self.time_line.remover_post(post)
-
-    def to_dict(self):
-        return json.loads(json.dumps(self, default=lambda o: o.__dict__))
-
 
     def __str__(self):
 
@@ -250,12 +241,11 @@ class Timeline:
 
     def to_dict(self):
 
+        timeline = {}
+        timeline['qtd_posts'] = self.__qtd_posts
         user_posts = []
         for post in self.__posts:
             user_posts.append(post.to_dict()) 
-
-        timeline = {}
-        timeline['qtd_posts'] = self.__qtd_posts
         timeline['posts'] = user_posts
 
         dict_obj = {}

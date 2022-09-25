@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "11ac63f5-77c0-46f0-9578-c467fc2e5a0a",
+		"name": "Prova_Agil_2022_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5424777"
+	},
+	"item": [
+		{
+			"name": "Requisitar todos os usuarios(BASE)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/usuario",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo com resposta esperada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/usuario",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.1.1 Python/3.7.9"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Sep 2022 18:32:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "302"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    [\n        1220,\n        \"Camila\",\n        \"camila@email.edu.br\"\n    ],\n    [\n        1221,\n        \"Ramon\",\n        \"ramon@email.edu.br\"\n    ],\n    [\n        1222,\n        \"Bruno\",\n        \"bruno@email.edu.br\"\n    ],\n    [\n        1223,\n        \"Elisa\",\n        \"elisa@email.edu.br\"\n    ],\n    [\n        1225,\n        \"Novo\",\n        \"novo@email.edu.br\"\n    ]\n]"
+				}
+			]
+		},
+		{
+			"name": "Requisitar um usuario especifico(BASE)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/usuario/1220",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"1220"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo com resposta esperada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/usuario/1220",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"usuario",
+								"1220"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.1.1 Python/3.7.9"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Sep 2022 18:37:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"camila@email.edu.br\",\n    \"id\": 1220,\n    \"nome\": \"Camila\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Inserir usuario já existente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"novo@email.edu.br\",\r\n    \"nome\": \"Novo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/usuario/1220",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"1220"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo com resposta esperada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"novo@email.edu.br\",\r\n    \"nome\": \"Novo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/usuario/1220",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"usuario",
+								"1220"
+							]
+						}
+					},
+					"status": "NOT FOUND",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.1.1 Python/3.7.9"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Sep 2022 18:40:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Erro\": \"Usuario já existe no cadastro\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Inserir usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"novo@email.edu.br\",\r\n    \"nome\": \"Usuario_novo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/usuario/1290",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"1290"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo cm resposta, sóirá funcionar uma vez. Sempre que precisar altere o id do usuario a ser inserido.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"novo@email.edu.br\",\r\n    \"nome\": \"Usuario_novo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/usuario/1290",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"usuario",
+								"1290"
+							]
+						}
+					},
+					"status": "CREATED",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.1.1 Python/3.7.9"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Sep 2022 18:42:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Usuário Cadastrado\": {\n        \"email\": \"novo@email.edu.br\",\n        \"nome\": \"Usuario_novo\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Requisitar timeline de um usuário específico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/usuario/1220/timeline",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuario",
+						"1220",
+						"timeline"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo com resposta esperada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/usuario/1220/timeline",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"usuario",
+								"1220",
+								"timeline"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.1.1 Python/3.7.9"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Sep 2022 18:43:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "742"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nome\": \"Camila\",\n    \"timeline\": {\n        \"posts\": [\n            {\n                \"comentarios\": [\n                    {\n                        \"comentario\": \"Comentario de Ramon no Post 1 de Camila\",\n                        \"user_id\": 1221\n                    }\n                ],\n                \"conteudo\": \"Meu primeiro Post - Camila\",\n                \"qtd_comentarios\": 1\n            },\n            {\n                \"comentarios\": [\n                    {\n                        \"comentario\": \"Comentario de Ramon no Post 2 de Camila\",\n                        \"user_id\": 1221\n                    },\n                    {\n                        \"comentario\": \"Comentario de Eliza no Post 2 de Camila\",\n                        \"user_id\": 1223\n                    }\n                ],\n                \"conteudo\": \"Meu segundo Post - Camila\",\n                \"qtd_comentarios\": 2\n            }\n        ],\n        \"qtd_posts\": 2\n    },\n    \"user_id\": 1220\n}"
+				}
+			]
+		}
+	]
+}
