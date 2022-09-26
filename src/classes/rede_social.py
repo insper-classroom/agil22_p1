@@ -74,27 +74,28 @@ class User:
             return False
             
 
-    
+    # Só comentar se for amigo]
+    def comentar_post(self, post:Post, comentario:str):
+        if post.proprietario in self.amigos:
+            meu_comentario = Comment(self, comentario)
+            post.adicionar_comentario(meu_comentario)
+            return meu_comentario
+
+
+    # !!!! Somente o dono do comentario ou dono do post pode remover o comentario
+    def remover_comentario_do_post(self, post:Post, comentario:Comment):
+        if (comentario != None and (comentario.proprietario_id == self.id or post.proprietario == self) ):
+            post.remover_comentario(comentario)
+
+
     def escrever_post(self, mensagem:str):
         meu_post = Post(self, mensagem)
         self.time_line.adicionar_post(meu_post)
         return meu_post
 
 
-    def comentar_post(self, post:Post, comentario:str):
-        meu_comentario = Comment(self, comentario)
-        post.adicionar_comentario(meu_comentario)
-        return meu_comentario
-
-
-    # !!!! Somente o dono do comentario ou dono do post pode remover o comentario
-    def remover_comentario_do_post(self, post:Post, comentario:Comment):
-        if (comentario.proprietario_id == self.id or post.proprietario == self ):
-            post.remover_comentario(comentario)
-
-
     def remover_post_da_timeline(self, post):
-        if post in self.time_line.retorna_lista_de_posts:
+        if post in self.time_line.retorna_lista_de_posts():
             self.time_line.remover_post(post)
 
     def __str__(self):
@@ -221,8 +222,11 @@ class Timeline:
 
         # Verifica se existe postagens na base
 
-    def retorna_lista_de_posts(self, post):
+    def retorna_lista_de_posts(self):
         return self.__posts
+
+    def retorna_qtd_de_posts(self):
+        return self.__qtd_posts
 
 
     def adicionar_post(self, post):
