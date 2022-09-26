@@ -213,14 +213,6 @@ class Timeline:
         self.__posts = []
         self.__qtd_posts = 0
 
-        # Se postagens não estiver zerado, adicionar
-        for post in postagens:
-            # verifica se é da classe Post
-            if type(post) == Post:
-                self.__posts.append(post)
-                self.__qtd_posts += 1
-
-        # Verifica se existe postagens na base
 
     def retorna_lista_de_posts(self):
         return self.__posts
