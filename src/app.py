@@ -5,7 +5,6 @@ from model.db import *
 
 
 app = Flask(__name__)
-app.list_of_dicts = []
 
 @app.before_first_request
 def load_dados():
