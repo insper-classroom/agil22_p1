@@ -1,3 +1,7 @@
+# Classes
+
+```mermaid
+
 classDiagram
 class User {
 +ind: int
@@ -49,3 +53,6 @@ Post "1" -- "n" Comment
 User <|-- Timeline
 User <.. Post
 User <.. Comment
+
+```
+
