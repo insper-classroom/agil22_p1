@@ -22,7 +22,7 @@ classmethod +buscar_usuario_ativo(user_id:int):~User~
 +__str__()
 }
 class Timeline {
-+proprietario: ~User~
++proprietario: User
 -posts: list~Post~
 -qtd_posts: int 
 +retorna_lista_de_posts():list~Post~
@@ -32,7 +32,7 @@ class Timeline {
 +__str__()
 }
 class Post {
-+proprietario: ~User~
++proprietario: User
 +conteudo: str
 +comentarios:list~Comment~
 +qtd_comentarios:int
@@ -47,12 +47,14 @@ class Comment {
 +to_dict(): dict
 +__str__()
 }
-User "1" -- "1" Timeline
+User "1" -- "1" Timeline 
 Timeline "1" -- "n" Post
 Post "1" -- "n" Comment 
 User <|-- Timeline
 User <.. Post
 User <.. Comment
+User *.. User
+
 
 ```
 
