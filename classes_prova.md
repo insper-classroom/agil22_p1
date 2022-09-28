@@ -48,11 +48,11 @@ class Comment {
 +__str__()
 }
 User "1" -- "1" Timeline 
-Timeline "1" -- "n" Post
-Post "1" -- "n" Comment : Tem
-User <|-- Timeline : Tem
-User <.. Post : Escreve post
-User <.. Comment : Comenta post
+Timeline "1" o-- "n" Post
+Post "1" o-- "n" Comment : Tem
+User --|> Timeline : Tem
+User ..> Post : Escreve post
+User ..> Comment : Comenta post
 User ..o User : É amigo de 
 
 
