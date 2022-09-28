@@ -49,11 +49,11 @@ class Comment {
 }
 User "1" -- "1" Timeline 
 Timeline "1" -- "n" Post
-Post "1" -- "n" Comment 
-User <|-- Timeline
-User <.. Post
-User <.. Comment
-User *.. User
+Post "1" -- "n" Comment : Tem
+User <|-- Timeline : Tem
+User <.. Post : Escreve post
+User <.. Comment : Comenta post
+User ..o User : É amigo de 
 
 
 ```
