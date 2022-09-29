@@ -1,12 +1,13 @@
-# prova_agil_2022_2 em andamento
-
-# Prova 1
+# prova_agil_2022_2 - # Prova 1
 
 ## Projeto Ágil e Programação Eficaz - frente de programação
 
 **Atenção** este projeto de código vale 8.0 pontos. Esta prova é complementada por uma primeira questão feita em papel 
 
+É um pré-requisito para aprovação na disciplina ter tirado mais que $5.0$ em uma prova. 
 
+
+A média de provas desta parte da disciplina é $MAX(P1, P2)$ de modo que este exame possa ser encarado com tranquilidade. 
 
 ## Recomendações gerais 
 
@@ -57,7 +58,7 @@ Recomendamos que use um ambiente virtual para realizar a prova. Se puder deixe-o
 
 Existe um *requirements.txt* para comodidade, caso queira usar um *venv.  De qualquer forma não usamos nenhum pacote fora do que foi testado em aula. 
 
-![Questão 1 - classes](./classes_prova.md)
+[Questão 1 - classes](./classes_prova.md)
 
 
 [Home](./README.md)

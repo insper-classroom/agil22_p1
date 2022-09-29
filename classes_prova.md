@@ -71,8 +71,6 @@ O próprio `User` ou seus amigos podem fazer comentários em seus posts. O arqui
 
 **Dica:** Não se preocupe com os relacionamentos. A mesma informação também está contida nos atributos das classes. 
 
-[Questões](enunciado.md)
-
 
 [Home](./README.md)
 [Q1](./Q1.md)
