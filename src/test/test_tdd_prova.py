@@ -305,3 +305,5 @@ def test_remover_comentario_de_post():
     usuario_b.remover_comentario_do_post(post1_b, comentario_r_para_b_post_2)
     assert not(comentario_r_para_b_post_2 in post1_b.comentarios)
     assert post1_b.qtd_comentarios == 1
+
+

@@ -1,3 +1,5 @@
+```mermaid 
+
 classDiagram
 class User {
 +ind: int
@@ -43,6 +45,10 @@ class Comment {
 +to_dict(): dict
 +__str__()
 }
+
 User "1" -- "1" Timeline
 Timeline "1" -- "n" Post
 Post "1" -- "n" Comment 
+User "n" -- "m" User
+
+```
