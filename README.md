@@ -23,6 +23,8 @@ O envio é pelo repositório do Github Classroom. Faça envios frequentes (add +
 
 **Desligue o celular**
 
+**Dúvidas** deverão ser tiradas via planilha, com uma descrição clara e suficiente para a sua completa compreensão: [Planilha de Dúvidas](https://docs.google.com/spreadsheets/d/1_coT1y0jJQLcq-36JvT5sBIhJRb8q8xEPj1BbOvDJA4/edit#gid=0)
+
 ## Estrutura do projeto:
 
 Atenção aos arquivos que precisam ser alterados. Você não vai precisar mexer em nenhum outro arquivo. 
