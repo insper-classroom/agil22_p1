@@ -50,7 +50,7 @@ class Comment {
 User "1" -- "1" Timeline : Tem
 Timeline "1" o-- "n" Post
 Post "1" o-- "n" Comment : Tem
-User "1" .. Post "n" : Escreve post
+User "1" .. "n" Post : Escreve post
 User "1" ..> "n" Comment : Comenta post
 User "n" ..o "m" User : É amigo de 
 

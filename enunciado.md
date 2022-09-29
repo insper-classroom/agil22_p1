@@ -4,14 +4,15 @@
 
 **Atenção** este projeto de código vale 8.0 pontos. Esta prova é complementada por uma primeira questão feita em papel 
 
-# Questão sobre modelo de objetos 
+# Q1 - Questão sobre modelo de objetos 
+**valor 4 pontos **
 
 Atenção: existem testes unitários no projeto para ajudá-lo a avançar nesta fase. Rode pytest -v na pasta inicial do projeto para ver as dicas. 
 
 Você pode ler os testes do arquivo `src/test/test_tdd_prova.py` para entender como os objetos funcionam. Mas não é esperado que você edite este arquivo. 
 
 
-## Método para buscar usuários
+## 1.1 Método para buscar usuários
 
 Adicionar na classe `User` um método chamado `buscar_usuario_ativo` que deve receber como parâmetro um `int` que corresponde ao **id** de um usuário. 
 
@@ -23,7 +24,7 @@ O valor de retorno deve ser o usuário, se ele existe na estrutura que guarda us
 
 **Atenção:** Nesta questão não é necessário usar SQL. Vamos buscar objetos da classe `User` que estejam na memória.  Cabe a você identificar como estes usuários já estão guardados. 
 
-## Método para adicionar amigos 
+## 1.2 Método para adicionar amigos 
 
 Crie na classe `User` um método chamado `adicionar_amigo` que receberá como parâmetro outro objeto `amigo2` da classe `User` para adicionar como amigo.
 
@@ -37,7 +38,7 @@ O próprio objeto da classe `User` - o `self` - precisa também se adicionar com
 
 
 
-## Método para remover amigo 
+## 1.3 Método para remover amigo 
 
 Implemente um método chamado `remover_amigo` que recebe um objeto `amigo2` da classe `User`.
 
@@ -54,7 +55,7 @@ Este método deve retornar `True` se o amigo foi devidamente removido, e caso co
 
 O objeto da classe `User` deve também se remover do `amigo2`. 
 
-## Método para escrever post e adicionar à *timeline*
+## 1.4 Método para escrever post e adicionar à *timeline*
 
 Crie um método chamado `escrever_post` na classe `User`.  
 
@@ -62,13 +63,13 @@ O método deve receber uma `str` com o conteúdo do post e usá-lo para instanci
 
 Para facilidade de testes no futuro, além de adicionar na *timeline* este método retorna o objeto `Post` que foi criado. 
 
-## Método para remover post da timeline 
+## 1.4 Método para remover post da timeline 
 
 Este método deve pertencer à classe `User`. Recebe um *post* e o remove da *timeline*. 
 
 Deve-se validar se o `Post` está mesmo na *timeline*.
 
-## Método para comentar post 
+## 1.6 Método para comentar post 
 
 Crie um método na classe `User` que: 
 
@@ -81,7 +82,7 @@ Devolve o objeto `Comment` criado
 
 Atenção: só se pode comentar um `Post` se ele for de um amigo do `User`. 
 
-## Método para remover comentário do post 
+## 1.7 Método para remover comentário do post 
 
 Este método recebe um objeto `Post` e um objeto `Comment`.  
 
