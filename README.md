@@ -26,16 +26,21 @@ Atenção aos arquivos que precisam ser alterados. Você não vai precisar mexer
 
 
 ```
+├── Q1.md
+├── Q2.md
+├── Q3.md
+├── README.md
 ├── classes_prova.md
 ├── doc
-│   └── diagrama.md
+│   ├── diagrama.md
+│   └── postman_ex_resposta_esperada.png
 ├── pytest.ini
 ├── requirements.txt
 └── src
-    ├── app.py  # Alterar para Q3
+    ├── app.py **Usada na Q3
     ├── classes
     │   ├── __init__.py
-    │   └── rede_social.py  # Alterar para Q1
+    │   └── rede_social.py ** Usada na Q1
     ├── main.py
     ├── model
     │   ├── __init__.py
@@ -45,9 +50,9 @@ Atenção aos arquivos que precisam ser alterados. Você não vai precisar mexer
     └── test
         ├── __init__.py
         ├── para_postman
-        │   └── Prova_Agil_2022_2.postman_collection.json  # Arquivo para Postman e Q3
+        │   └── Prova_Agil_2022_2.postman_collection.json **Usar no Postman na Q3
         ├── test_tdd_prova.py
-        └── test_unit_test_prova.py  #Alterar para Q2
+        └── test_unit_test_prova.py  **Alterar para Q2
 ```
 
 A questão 1 conta com testes unitários para ajudá-lo a verificar seu progresso. Para executá-los vá à pasta principal do projeto e execute: 

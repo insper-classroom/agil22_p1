@@ -40,63 +40,6 @@ class User:
         
 
 
-    @classmethod
-    def buscar_usuario_ativo(cls, user_id:int)->User:
-
-        if user_id in cls.dict_usuarios_ativos.keys():
-            return cls.dict_usuarios_ativos[user_id]
-
-
-
-    def adicionar_amigo(self, amigo:User):
-
-        # verifica se esse amigo já existe na lista antes de adicionar
-        if not(amigo in self.amigos):
-            self.amigos.append(amigo)
-            amigo.amigos.append(self)
-            self.qtd_amigos += 1
-            amigo.qtd_amigos += 1
-            return True
-        else:
-            return False
-
-
-    def remover_amigo(self, amigo:User):
-    
-        # verifica se esse amigo já existe na lista antes de adicionar
-        if amigo in self.amigos:
-            self.amigos.remove(amigo)
-            amigo.amigos.remove(self)
-            self.qtd_amigos -= 1
-            amigo.qtd_amigos -= 1
-            return True
-        else:
-            return False
-            
-
-    # Só comentar se for amigo]
-    def comentar_post(self, post:Post, comentario:str):
-        if post.proprietario in self.amigos:
-            meu_comentario = Comment(self, comentario)
-            post.adicionar_comentario(meu_comentario)
-            return meu_comentario
-
-
-    # !!!! Somente o dono do comentario ou dono do post pode remover o comentario
-    def remover_comentario_do_post(self, post:Post, comentario:Comment):
-        if (comentario != None and (comentario.proprietario_id == self.id or post.proprietario == self) ):
-            post.remover_comentario(comentario)
-
-
-    def escrever_post(self, mensagem:str):
-        meu_post = Post(self, mensagem)
-        self.time_line.adicionar_post(meu_post)
-        return meu_post
-
-
-    def remover_post_da_timeline(self, post):
-        if post in self.time_line.retorna_lista_de_posts():
-            self.time_line.remover_post(post)
 
     def __str__(self):
 
@@ -144,7 +87,6 @@ class Comment:
 
     def __str__(self):
         return f'{self.proprietario_id}: {self.__conteudo}'
-
 
 
 
@@ -213,26 +155,11 @@ class Timeline:
         self.__posts = []
         self.__qtd_posts = 0
 
-
     def retorna_lista_de_posts(self):
         return self.__posts
 
     def retorna_qtd_de_posts(self):
         return self.__qtd_posts
-
-
-    def adicionar_post(self, post):
-
-        if not( post in self.__posts ):
-            self.__posts.append(post)
-            self.__qtd_posts += 1
-
-
-    def remover_post(self, post):
-    
-        if post in self.__posts:
-            self.__posts.remove(post)
-            self.__qtd_posts -= 1
 
 
     def to_dict(self):

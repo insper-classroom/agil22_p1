@@ -14,6 +14,8 @@ def load_dados():
     usuario_e = User(user_id=1223)
     usuario_ed = User(user_id=1, nome='Eduardo', email='eduardo@email.com')
 
+
+    # Daqui para baixo nesta função o código serve para gerar timeline, que vai ser usada na rota timeline mais abaixo
     usuario_c.adicionar_amigo(usuario_b)
     usuario_c.adicionar_amigo(usuario_r)
     usuario_e.adicionar_amigo(usuario_b)
@@ -31,49 +33,6 @@ def load_dados():
 @app.route("/")
 def hello_world():
     return "<p>Apenas um teste no dominio raiz!</p>"
-
-
-
-# Operações com a base
-@app.route('/usuario/<int:user_id>', methods=['POST'])
-def rota_inserir_usuario( user_id ):
-
-    try:
-        content = request.get_json()
-    except:
-        return {'Erro': 'Entrada não é um Json Válido'}, 400
-
-    cmd_sql = 'select * from tbl_usuarios WHERE user_id = ?'
-    registrado, encontrado = select_query(cmd_sql, user_id)
-
-    if not(encontrado):
-
-        dado = (user_id, content['nome'], content['email'])
-
-        cmd_sql = 'INSERT INTO tbl_usuarios(user_id, nome, email) VALUES (?, ?, ?)'
-        sucesso = insert_query(cmd_sql, dado)
-        if sucesso:
-            return {'Usuário Cadastrado': content}, 201
-        else:
-            return {'Erro': 'Ocorreu Algum erro ao tentar cadastrar o usuário'}, 500
-    else:
-        return {'Erro': 'Usuario já existe no cadastro'}, 404
-
-
-# Operações com a base
-@app.route('/usuario/<int:user_id>', methods=['GET'])
-def rota_buscar_usuario( user_id ):
-
-    cmd_sql = 'select * from tbl_usuarios WHERE user_id = ?'
-    user_data, encontrado = select_query(cmd_sql, user_id)
-
-    resp = {'id':user_data[0], 'nome':user_data[1], 'email':user_data[2]}
-
-    print(resp)
-    if encontrado:
-        return jsonify(resp), 200
-    else:
-        return {'Erro': 'Usuário não Encontrado'}, 404
 
 
 # Operações com a base
