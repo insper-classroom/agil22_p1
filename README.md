@@ -1,4 +1,4 @@
-# prova_agil_2022_2 - # Prova 1
+# Prova 1 - 2022
 
 ## Projeto Ágil e Programação Eficaz - frente de programação
 
@@ -18,6 +18,8 @@ Você pode consultar livremente a internet desde que **não se comunique** com o
 **Feche o WhatsApp** e quaisquer outros recursos de comunicação individual (Outlook, Gmail, etc)
 
 Sua tela será gravada pelo *Proctorio*
+
+O envio é pelo repositório do Github Classroom. Faça envios frequentes (add + commit + push)
 
 
 ## Estrutura do projeto:
