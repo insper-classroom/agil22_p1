@@ -21,6 +21,7 @@ Sua tela será gravada pelo *Proctorio*
 
 O envio é pelo repositório do Github Classroom. Faça envios frequentes (add + commit + push)
 
+**Desligue o celular**
 
 ## Estrutura do projeto:
 
@@ -59,7 +60,7 @@ Atenção aos arquivos que precisam ser alterados. Você não vai precisar mexer
 
 A questão 1 conta com testes unitários para ajudá-lo a verificar seu progresso. Para executá-los vá à pasta principal do projeto e execute: 
 
-    pytest -v
+    pytest -v -m tdd_prova_nao_altere_esses_testes
 
 Recomendamos que use um ambiente virtual para realizar a prova. Se puder deixe-o fora da pasta que contém a prova e não o envie ao Github. 
 
