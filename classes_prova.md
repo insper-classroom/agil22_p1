@@ -67,7 +67,7 @@ Um `User` adiciona outros como amigos. Um usuário pode ter de $0$ a $n$ amigos.
 
 Os *posts* podem receber comentários do próprio `User` ou de seus amigos. 
 
-O próprio `User` ou seus amigos podem fazer comentários em seus posts. O arquivo de testes  ``src/test/test_tdd_prova.py` tem alguns exemplos de uso dos objetos deste modelo. 
+O próprio `User` ou seus amigos podem fazer comentários em seus posts. O arquivo de testes  `src/test/test_tdd_prova.py` tem alguns exemplos de uso dos objetos deste modelo. 
 
 **Dica:** Não se preocupe com os relacionamentos. A mesma informação também está contida nos atributos das classes. 
 
