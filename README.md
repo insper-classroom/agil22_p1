@@ -17,13 +17,14 @@ Você pode consultar livremente a internet desde que **não se comunique** com o
 
 **Feche o WhatsApp** e quaisquer outros recursos de comunicação individual (Outlook, Gmail, etc)
 
-Sua tela será gravada pelo *Proctorio*
+Sua tela será gravada pelo *Proctorio*, então não esqueça de manter a aba do Blackboard aberta, mesmo que em segundo plano, durante o periodo da prova
 
 O envio é pelo repositório do Github Classroom. Faça envios frequentes (add + commit + push)
 
 **Desligue o celular**
 
 [**Dúvidas** deverão ser tiradas via planilha, com uma descrição clara e suficiente para a sua completa compreensão: Planilha de Dúvidas](https://docs.google.com/spreadsheets/d/1_coT1y0jJQLcq-36JvT5sBIhJRb8q8xEPj1BbOvDJA4/edit#gid=0)
+
 
 ## Estrutura do projeto:
 
