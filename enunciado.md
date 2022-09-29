@@ -5,7 +5,7 @@
 **Atenção** este projeto de código vale 8.0 pontos. Esta prova é complementada por uma primeira questão feita em papel 
 
 # Q1 - Questão sobre modelo de objetos 
-**valor 4 pontos **
+**Valor 4 pontos**
 
 Atenção: existem testes unitários no projeto para ajudá-lo a avançar nesta fase. Rode pytest -v na pasta inicial do projeto para ver as dicas. 
 
@@ -65,13 +65,15 @@ Para facilidade de testes no futuro, além de adicionar na *timeline* este méto
 
 ## 1.4 Método para remover post da timeline 
 
+O método deve se chamar `remover_post_da_timeline`.
+
 Este método deve pertencer à classe `User`. Recebe um *post* e o remove da *timeline*. 
 
 Deve-se validar se o `Post` está mesmo na *timeline*.
 
 ## 1.6 Método para comentar post 
 
-Crie um método na classe `User` que: 
+Crie um método na classe `User` chamado `comentar_post` que: 
 
 * Recebe um objeto `Post` já criado. Este `Post` pode pertencer a outro `User`
 * Recebe uma `str` com uma mensagem
@@ -84,6 +86,8 @@ Atenção: só se pode comentar um `Post` se ele for de um amigo do `User`.
 
 ## 1.7 Método para remover comentário do post 
 
+O método desta seção deve se chamar `remover_comentario_do_post`. 
+
 Este método recebe um objeto `Post` e um objeto `Comment`.  
 
 O `Comment` deve ser removido do `Post`
@@ -91,8 +95,12 @@ O `Comment` deve ser removido do `Post`
 Uma regra que deve ser seguida é que somente o autor do Post ou o autor do comentário Comment podem excluir comentário. 
 
 
-# Questão sobre testes unitários 
+# 2. Questão sobre testes unitários 
 
-# Questão sobre Flask 
+
+
+# Questão sobre Flask e BD 
+
+
 
 
